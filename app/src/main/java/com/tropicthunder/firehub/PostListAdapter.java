@@ -105,7 +105,7 @@ import java.util.List;
 
 public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsViewHolder>{
 
-    private List<PostDetails> postsList;
+    private static List<PostDetails> postsList;
     private Context context;
     private String timeAgo;
 
@@ -139,6 +139,24 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
             tvCategory = (TextView) itemView.findViewById(R.id.txt_Category);
             tvRating = (TextView) itemView.findViewById(R.id.txt_rating);
             tvTeacherName = (TextView) itemView.findViewById(R.id.txt_teacherName);
+
+            coursePicture.setOnClickListener(new View.OnClickListener(){
+                @Override public void onClick(View v){
+                    Intent intent = new Intent(v.getContext(), ClassDetailsActivity.class);
+                    intent.putExtra("title", tvClassTitle.getText());
+                    intent.putExtra("category", tvCategory.getText());
+                    intent.putExtra("name", tvTeacherName.getText());
+                    intent.putExtra("rating", tvRating.getText());
+                    intent.putExtra("coursePicture", "");
+                    intent.putExtra("teacherPicture", "");
+                    intent.putExtra("uID", postsList.get(getAdapterPosition()).getUid());
+                    intent.putExtra("description", postsList.get(getAdapterPosition()).getDescription());
+                    intent.putExtra("venue", postsList.get(getAdapterPosition()).getVenue());
+                    intent.putExtra("time", postsList.get(getAdapterPosition()).getTime());
+                    intent.putExtra("date", postsList.get(getAdapterPosition()).getDate());
+                    v.getContext().startActivity(intent);
+                }
+            });
 
 
             /*view.setOnClickListener(new View.OnClickListener() {
