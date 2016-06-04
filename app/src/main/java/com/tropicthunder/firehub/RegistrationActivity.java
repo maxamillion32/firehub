@@ -18,11 +18,13 @@ import com.firebase.client.FirebaseError;
 import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        session = new SessionManager(this);
 
         final Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com");
 
@@ -47,6 +49,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onAuthenticated(AuthData authData) {
                         // Authenticated successfully with payload authData
+                        session.createLoginSession(authData.getToken(), authData.getUid());
                         Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
                         finish();
