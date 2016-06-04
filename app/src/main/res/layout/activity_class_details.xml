@@ -248,7 +248,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SIGN UP"
-                android:id="@+id/button2"
+                android:id="@+id/btn_joinClass"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:background="@color/colorPrimaryDark" />
