@@ -63,7 +63,7 @@
             <ImageView
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:id="@+id/imageView3" />
+                android:id="@+id/img_teacherPicture" />
 
             <TextView
                 android:layout_width="wrap_content"

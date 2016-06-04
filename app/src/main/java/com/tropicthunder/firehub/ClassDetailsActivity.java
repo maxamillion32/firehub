@@ -26,6 +26,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
         TextView date = (TextView)findViewById(R.id.txt_Date);
         Button backBtn = (Button)findViewById(R.id.btn_Back);
         ImageView coursePicture = (ImageView) findViewById(R.id.img_classPicture);
+        ImageView teacherPicture = (ImageView) findViewById(R.id.img_teacherPicture);
 
         Intent intent = getIntent();
 
@@ -40,6 +41,11 @@ public class ClassDetailsActivity extends AppCompatActivity {
                 .centerCrop()
                 .fit()
                 .into(coursePicture);
+
+        Picasso.with(getApplicationContext()).load(intent.getStringExtra("teacherPicture"))
+                .centerCrop()
+                .fit()
+                .into(teacherPicture);
 
         backBtn.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v){
