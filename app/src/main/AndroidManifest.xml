@@ -33,7 +33,10 @@
         <activity
             android:name=".ClassDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TeachActivity"
+        <activity
+            android:name=".TeachActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MyClassesActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
