@@ -63,10 +63,9 @@ public class MainActivity extends AppCompatActivity {
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                System.out.println(dataSnapshot.getKey());
-                if (dataSnapshot.getKey() == "count"){
-                    System.out.println(dataSnapshot.getValue());
-                    postCount.setText(dataSnapshot.getValue().toString());
+                if (dataSnapshot.getKey().equals("count")){
+                    Count count = dataSnapshot.getValue(Count.class);
+                    postCount.setText(String.valueOf(count.getNumber()));
                 }
                 else{
                     PostDetails post = dataSnapshot.getValue(PostDetails.class);
@@ -77,7 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                if (dataSnapshot.getKey().equals("count")){
+                    Count count = dataSnapshot.getValue(Count.class);
+                    postCount.setText(String.valueOf(count.getNumber()));
+                }
+                else{
 
+                }
             }
 
             @Override
