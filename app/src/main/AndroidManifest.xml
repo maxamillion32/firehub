@@ -41,7 +41,10 @@
         <activity
             android:name=".MyClassesActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateClassActivity"
+        <activity
+            android:name=".CreateClassActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditProfileActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
