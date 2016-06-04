@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 btnLogin.setProgress(99);
                 //Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
 
-                session.createLoginSession(authData.getToken());
+                session.createLoginSession(authData.getToken(), authData.getUid());
                 Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
