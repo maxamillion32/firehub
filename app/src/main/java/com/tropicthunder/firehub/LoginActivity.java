@@ -17,9 +17,11 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 public class LoginActivity extends AppCompatActivity {
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        session = new SessionManager(this);
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_login);
@@ -38,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
                 btnLogin.setProgress(99);
                 //Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
 
+                session.createLoginSession(authData.getToken());
+                Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             }
