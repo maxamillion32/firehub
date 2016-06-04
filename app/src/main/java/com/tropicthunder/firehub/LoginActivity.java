@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_login);
 
-        Firebase ref = new Firebase("https://firehub-5ae48.firebaseio.com");
+        Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com");
         ref.createUser("bryanlee@firebase.com", "imbryanlee", new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onError(FirebaseError firebaseError) {
                 // there was an error
-                System.out.println("Error");
+                System.out.println("Error" + firebaseError.getMessage());
             }
         });
     }
