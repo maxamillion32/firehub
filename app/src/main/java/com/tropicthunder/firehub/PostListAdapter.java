@@ -189,8 +189,14 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
         postsViewHolder.tvCategory.setText(postsList.get(i).getCategory());
         postsViewHolder.tvClassTitle.setText(postsList.get(i).getTitle());
 
-        Picasso.with(context).load(postsList.get(i).getCoursePicture()).into(postsViewHolder.coursePicture);
-        Picasso.with(context).load(postsList.get(i).getTeacherPicture()).into(postsViewHolder.teacherPicture);
+        Picasso.with(context).load(postsList.get(i).getCoursePicture())
+                .centerCrop()
+                .fit()
+                .into(postsViewHolder.coursePicture);
+        Picasso.with(context).load(postsList.get(i).getTeacherPicture())
+                .centerCrop()
+                .fit()
+                .into(postsViewHolder.teacherPicture);
 
 //        postsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
