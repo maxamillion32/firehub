@@ -31,6 +31,7 @@ public class SessionManager {
     // Access token (make variable public to access from outside)
     public static final String KEY_ACCESS_TOKEN = "access_token";
     public static final String UID = "uid";
+    public static final String KEY = "key";
 
 //    public static final String NAME = "display_name";
 //    public static final String LOCATION = "location";
@@ -133,11 +134,25 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void setKey(String key) {
+        editor.remove(KEY);
+
+        // Storing access code in pref
+        editor.putString(KEY, key);
+
+        // commit changes
+        editor.commit();
+    }
+
     public String getKeyAccessToken(){
         return pref.getString(KEY_ACCESS_TOKEN, "NO ACCESS TOKEN");
     }
 
     public String getUid(){
         return pref.getString(UID, "NO UID");
+    }
+
+    public String getKey(){
+        return pref.getString(KEY, "NO KEY");
     }
 }

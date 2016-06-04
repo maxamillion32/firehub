@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SessionManager sessionManager = new SessionManager(this);
+
         Button btnTeach = (Button)findViewById(R.id.btn_Teach);
         Button btnMyClasses = (Button) findViewById(R.id.btn_myClasses);
         final TextView postCount = (TextView)findViewById(R.id.txt_postCount);
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     PostDetails post = dataSnapshot.getValue(PostDetails.class);
+                    post.setKey(dataSnapshot.getKey());
                     postsList.add(post);
                     mAdapter.notifyDataSetChanged();
                 }
@@ -110,7 +113,15 @@ public class MainActivity extends AppCompatActivity {
                     postCount.setText(String.valueOf(count.getNumber()));
                 }
                 else{
+                    PostDetails post = dataSnapshot.getValue(PostDetails.class);
+                    post.setKey(dataSnapshot.getKey());
 
+                    for (int i=0; i<postsList.size(); i++){
+                        if (postsList.get(i).getKey().equals(post.getKey())){
+                            postsList.set(i, post);
+                        }
+                    }
+                    mAdapter.notifyDataSetChanged();
                 }
             }
 

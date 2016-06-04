@@ -4,7 +4,7 @@ package com.tropicthunder.firehub;
  * Created by Bryan Lee on 4/6/2016.
  */
 public class PostDetails {
-    private String title, category, name, rating, coursePicture, teacherPicture, uid, description, venue, time, date;
+    private String title, category, name, rating, coursePicture, teacherPicture, uid, description, venue, time, date, key;
 
     private String[] participants;
 
@@ -25,6 +25,14 @@ public class PostDetails {
 
     public PostDetails() {
 
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String[] getParticipants() {

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -19,6 +20,10 @@ public class ClassDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_details);
+
+        final Intent intent = getIntent();
+
+        final SessionManager sessionManager = new SessionManager(this);
 
         TextView teacherName = (TextView)findViewById(R.id.txt_teacherName);
         TextView description = (TextView)findViewById(R.id.txt_Description);
@@ -51,18 +56,23 @@ public class ClassDetailsActivity extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 //do what if press confirm -> do API call?
+                                int n = intent.getStringArrayExtra("participants").length + 1;
+                                String[] arr = new String[n];
+                                Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com/data/posts/" + intent.getStringExtra("key") + "/participants");
+
+                                for (int i=0; i<intent.getStringArrayExtra("participants").length; i++){
+                                    arr[i] = intent.getStringArrayExtra("participants")[i];
+                                }
+                                arr[n-1] = sessionManager.getUid();
+
+                                ref.setValue(arr);
+
+                                sweetAlertDialog.cancel();
                             }
                         })
                         .show();
             }
         });
-
-        Intent intent = getIntent();
-        if(intent.getStringArrayExtra("participants") != null) {
-            for (int i = 0; i < intent.getStringArrayExtra("participants").length; i++) {
-                System.out.println(intent.getStringArrayExtra("participants")[i]);
-            }
-        }
 
         teacherName.setText(intent.getStringExtra("name"));
         rating.setText(intent.getStringExtra("rating"));
