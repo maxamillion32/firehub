@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="0000"
-                android:id="@+id/textView4"
+                android:id="@+id/txt_postCount"
                 android:textStyle="bold"
                 android:textColor="@color/colorAccent"
                 android:textSize="28sp"
