@@ -30,7 +30,8 @@
             android:layout_alignLeft="@+id/btnRegister"
             android:layout_alignStart="@+id/btnRegister"
             android:layout_marginLeft="30px"
-            android:layout_marginRight="30px" />
+            android:layout_marginRight="30px"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:layout_width="match_parent"
