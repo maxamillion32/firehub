@@ -1,0 +1,13 @@
+package com.tropicthunder.firehub;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class ClassDetailsActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_class_details);
+    }
+}
