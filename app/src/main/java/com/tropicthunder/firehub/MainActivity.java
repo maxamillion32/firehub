@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnTeach = (Button)findViewById(R.id.btn_Teach);
+        Button btnMyClasses = (Button) findViewById(R.id.btn_myClasses);
         final TextView postCount = (TextView)findViewById(R.id.txt_postCount);
         final TextView txtLocation = (TextView)findViewById(R.id.txt_Location);
 
@@ -62,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, TeachActivity.class));
 
+            }
+        });
+
+        btnMyClasses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MyClassesActivity.class));
             }
         });
 
