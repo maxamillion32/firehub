@@ -22,6 +22,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         session = new SessionManager(this);
+
+        if (session.isLoggedIn()){
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_login);
