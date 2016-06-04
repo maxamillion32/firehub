@@ -1,6 +1,8 @@
 package com.tropicthunder.firehub;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,6 +37,25 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnTeach = (Button)findViewById(R.id.btn_Teach);
         final TextView postCount = (TextView)findViewById(R.id.txt_postCount);
+        final TextView txtLocation = (TextView)findViewById(R.id.txt_Location);
+
+        txtLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final CharSequence[] items = {"Bukit Bintang", "Ampang", "Cheras"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("Select location");
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        // Do something with the selection
+                        txtLocation.setText(items[item]);
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
 
         btnTeach.setOnClickListener(new View.OnClickListener() {
             @Override
