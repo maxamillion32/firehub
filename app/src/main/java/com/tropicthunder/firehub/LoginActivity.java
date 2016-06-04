@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.AuthData;
@@ -25,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         final Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com");
 
         Button btnLogin = (Button)findViewById(R.id.btnLogin);
-        Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        TextView btnRegister = (TextView) findViewById(R.id.btnRegister);
         final EditText txtUsername = (EditText) findViewById(R.id.txtEmail);
         final EditText txtPassword = (EditText) findViewById(R.id.txtPassword);
 
