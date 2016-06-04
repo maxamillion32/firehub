@@ -9,8 +9,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.tropicthunder.firehub.LoginActivity">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/txtPassword"
+        android:layout_marginTop="84dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/txtEmail"
+        android:layout_alignStart="@+id/txtEmail"
+        android:hint="Password"
+        android:password="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtEmail"
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="46dp"
+        android:hint="Email"
+        android:layout_below="@+id/txtPassword"
+        android:layout_alignLeft="@+id/btnRegister"
+        android:layout_alignStart="@+id/btnRegister" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/btnLogin"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/txtEmail"
+        android:layout_alignEnd="@+id/txtEmail" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register New Account"
+        android:id="@+id/btnRegister"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp" />
 </RelativeLayout>
