@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (session.isLoggedIn()){
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
         }
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
