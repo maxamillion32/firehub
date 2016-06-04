@@ -2,6 +2,7 @@ package com.tropicthunder.firehub;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class MyClassListAdapter extends RecyclerView.Adapter<MyClassListAdapter.MyClassViewHolder>{
 
-    private List<PostDetails> postsList;
+    private static List<PostDetails> postsList;
     private Context context;
     private String timeAgo;
 
@@ -38,20 +39,40 @@ public class MyClassListAdapter extends RecyclerView.Adapter<MyClassListAdapter.
     }*/
 
     public static class MyClassViewHolder extends RecyclerView.ViewHolder{
-        ImageView coursePicture, teacherPicture;
-        TextView tvClassTitle, tvCategory, tvTeacherName, tvRating;
+
+        TextView tvDate, tvClassTitle, tvTeacherName;
 
         public View view;
 
         MyClassViewHolder(View itemView) {
             super(itemView);
             view = itemView;
-            coursePicture = (ImageView) itemView.findViewById(R.id.img_CoursePicture);
-            teacherPicture = (ImageView) itemView.findViewById(R.id.img_teacherPicture);
-            tvClassTitle = (TextView) itemView.findViewById(R.id.txt_classTitle);
-            tvCategory = (TextView) itemView.findViewById(R.id.txt_Category);
-            tvRating = (TextView) itemView.findViewById(R.id.txt_rating);
-            tvTeacherName = (TextView) itemView.findViewById(R.id.txt_teacherName);
+
+            tvClassTitle = (TextView) itemView.findViewById(R.id.txt_className);
+            tvDate = (TextView) itemView.findViewById(R.id.txt_Date);
+            tvTeacherName = (TextView) itemView.findViewById(R.id.txt_teacher);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    Intent intent = new Intent(v.getContext(), ClassDetailsActivity.class);
+                    intent.putExtra("title", tvClassTitle.getText());
+                    intent.putExtra("category", postsList.get(getAdapterPosition()).getCategory());
+                    intent.putExtra("name", tvTeacherName.getText());
+                    intent.putExtra("rating", postsList.get(getAdapterPosition()).getRating());
+                    intent.putExtra("coursePicture", postsList.get(getAdapterPosition()).getCoursePicture());
+                    intent.putExtra("teacherPicture", postsList.get(getAdapterPosition()).getTeacherPicture());
+                    intent.putExtra("uID", postsList.get(getAdapterPosition()).getUid());
+                    intent.putExtra("description", postsList.get(getAdapterPosition()).getDescription());
+                    intent.putExtra("venue", postsList.get(getAdapterPosition()).getVenue());
+                    intent.putExtra("time", postsList.get(getAdapterPosition()).getTime());
+                    intent.putExtra("date", postsList.get(getAdapterPosition()).getDate());
+                    intent.putExtra("participants", postsList.get(getAdapterPosition()).getParticipants());
+                    v.getContext().startActivity(intent);
+                }
+            });
 
 
             /*view.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +108,7 @@ public class MyClassListAdapter extends RecyclerView.Adapter<MyClassListAdapter.
     @Override
     public MyClassViewHolder onCreateViewHolder(ViewGroup viewGroup, final int i) {
         //inflate card layout
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_course, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_myclass, viewGroup, false);
         return new MyClassViewHolder(v);
     }
 
@@ -97,19 +118,12 @@ public class MyClassListAdapter extends RecyclerView.Adapter<MyClassListAdapter.
 
 
         //set answer card textviews text
-        postsViewHolder.tvRating.setText(postsList.get(i).getRating());
+        postsViewHolder.tvDate.setText(postsList.get(i).getDate());
         postsViewHolder.tvTeacherName.setText(postsList.get(i).getName());
-        postsViewHolder.tvCategory.setText(postsList.get(i).getCategory());
+
         postsViewHolder.tvClassTitle.setText(postsList.get(i).getTitle());
 
-        Picasso.with(context).load(postsList.get(i).getCoursePicture())
-                .centerCrop()
-                .fit()
-                .into(postsViewHolder.coursePicture);
-        Picasso.with(context).load(postsList.get(i).getTeacherPicture())
-                .centerCrop()
-                .fit()
-                .into(postsViewHolder.teacherPicture);
+
 
 //        postsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override

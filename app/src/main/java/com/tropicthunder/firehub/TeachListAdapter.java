@@ -69,6 +69,7 @@ public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.Teac
                     intent.putExtra("venue", postsList.get(getAdapterPosition()).getVenue());
                     intent.putExtra("time", postsList.get(getAdapterPosition()).getTime());
                     intent.putExtra("date", postsList.get(getAdapterPosition()).getDate());
+                    intent.putExtra("participants", postsList.get(getAdapterPosition()).getParticipants());
                     v.getContext().startActivity(intent);
                 }
             });
