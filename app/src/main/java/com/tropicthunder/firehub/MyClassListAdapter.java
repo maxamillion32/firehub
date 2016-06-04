@@ -16,13 +16,13 @@ import java.util.List;
 /**
  * Created by Bryan Lee on 4/6/2016.
  */
-public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.TeachingViewHolder>{
+public class MyClassListAdapter extends RecyclerView.Adapter<MyClassListAdapter.MyClassViewHolder>{
 
     private List<PostDetails> postsList;
     private Context context;
+    private String timeAgo;
 
-
-    public TeachListAdapter(List<PostDetails> posts, Context c){
+    public MyClassListAdapter(List<PostDetails> posts, Context c){
         this.postsList = posts;
         this.context = c;
     }
@@ -37,17 +37,20 @@ public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.Teac
         notifyDataSetChanged();
     }*/
 
-    public static class TeachingViewHolder extends RecyclerView.ViewHolder{
-
-        TextView tvClassTitle, tvTeacherName, tvDate;
+    public static class MyClassViewHolder extends RecyclerView.ViewHolder{
+        ImageView coursePicture, teacherPicture;
+        TextView tvClassTitle, tvCategory, tvTeacherName, tvRating;
 
         public View view;
 
-        TeachingViewHolder(View itemView) {
+        MyClassViewHolder(View itemView) {
             super(itemView);
             view = itemView;
+            coursePicture = (ImageView) itemView.findViewById(R.id.img_CoursePicture);
+            teacherPicture = (ImageView) itemView.findViewById(R.id.img_teacherPicture);
             tvClassTitle = (TextView) itemView.findViewById(R.id.txt_classTitle);
-            tvDate = (TextView) itemView.findViewById(R.id.txt_Date);
+            tvCategory = (TextView) itemView.findViewById(R.id.txt_Category);
+            tvRating = (TextView) itemView.findViewById(R.id.txt_rating);
             tvTeacherName = (TextView) itemView.findViewById(R.id.txt_teacherName);
 
 
@@ -82,23 +85,31 @@ public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.Teac
     }
 
     @Override
-    public TeachingViewHolder onCreateViewHolder(ViewGroup viewGroup, final int i) {
+    public MyClassViewHolder onCreateViewHolder(ViewGroup viewGroup, final int i) {
         //inflate card layout
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_course, viewGroup, false);
-        return new TeachingViewHolder(v);
+        return new MyClassViewHolder(v);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(TeachingViewHolder postsViewHolder, final int i) {
+    public void onBindViewHolder(MyClassViewHolder postsViewHolder, final int i) {
 
 
         //set answer card textviews text
-
+        postsViewHolder.tvRating.setText(postsList.get(i).getRating());
         postsViewHolder.tvTeacherName.setText(postsList.get(i).getName());
-        postsViewHolder.tvDate.setText(postsList.get(i).getDate());
+        postsViewHolder.tvCategory.setText(postsList.get(i).getCategory());
         postsViewHolder.tvClassTitle.setText(postsList.get(i).getTitle());
 
+        Picasso.with(context).load(postsList.get(i).getCoursePicture())
+                .centerCrop()
+                .fit()
+                .into(postsViewHolder.coursePicture);
+        Picasso.with(context).load(postsList.get(i).getTeacherPicture())
+                .centerCrop()
+                .fit()
+                .into(postsViewHolder.teacherPicture);
 
 //        postsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
