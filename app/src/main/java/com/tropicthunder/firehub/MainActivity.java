@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnTeach = (Button)findViewById(R.id.btn_Teach);
+        final TextView postCount = (TextView)findViewById(R.id.txt_postCount);
 
         btnTeach.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +63,16 @@ public class MainActivity extends AppCompatActivity {
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                PostDetails post = dataSnapshot.getValue(PostDetails.class);
-                System.out.println(post.getName());
-                postsList.add(post);
-                mAdapter.notifyDataSetChanged();
+                System.out.println(dataSnapshot.getKey());
+                if (dataSnapshot.getKey() == "count"){
+                    System.out.println(dataSnapshot.getValue());
+                    postCount.setText(dataSnapshot.getValue().toString());
+                }
+                else{
+                    PostDetails post = dataSnapshot.getValue(PostDetails.class);
+                    postsList.add(post);
+                    mAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
