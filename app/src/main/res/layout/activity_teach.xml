@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create new class"
-            android:id="@+id/button"
+            android:id="@+id/btn_create_class"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/txtPassword"
             android:layout_alignStart="@+id/txtPassword"

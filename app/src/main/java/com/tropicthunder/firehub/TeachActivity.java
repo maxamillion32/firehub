@@ -33,8 +33,16 @@ public class TeachActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
+            }
+        });
+
+        Button btnCreateClass = (Button) findViewById(R.id.btn_create_class);
+        btnCreateClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TeachActivity.this, CreateClassActivity.class));
+//                finish();
             }
         });
 
