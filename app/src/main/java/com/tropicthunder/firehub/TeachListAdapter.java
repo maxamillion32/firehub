@@ -2,6 +2,7 @@ package com.tropicthunder.firehub;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.TeachingViewHolder>{
 
-    private List<PostDetails> postsList;
+    private static List<PostDetails> postsList;
     private Context context;
 
 
@@ -49,6 +50,24 @@ public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.Teac
             tvClassTitle = (TextView) itemView.findViewById(R.id.txt_classTitle);
             tvDate = (TextView) itemView.findViewById(R.id.txt_Date);
             tvTeacherName = (TextView) itemView.findViewById(R.id.txt_teacherName);
+
+            coursePicture.setOnClickListener(new View.OnClickListener(){
+                @Override public void onClick(View v){
+                    Intent intent = new Intent(v.getContext(), ClassDetailsActivity.class);
+                    intent.putExtra("title", tvClassTitle.getText());
+                    intent.putExtra("category", tvCategory.getText());
+                    intent.putExtra("name", tvTeacherName.getText());
+                    intent.putExtra("rating", tvRating.getText());
+                    intent.putExtra("coursePicture", postsList.get(getAdapterPosition()).getCoursePicture());
+                    intent.putExtra("teacherPicture", postsList.get(getAdapterPosition()).getTeacherPicture());
+                    intent.putExtra("uID", postsList.get(getAdapterPosition()).getUid());
+                    intent.putExtra("description", postsList.get(getAdapterPosition()).getDescription());
+                    intent.putExtra("venue", postsList.get(getAdapterPosition()).getVenue());
+                    intent.putExtra("time", postsList.get(getAdapterPosition()).getTime());
+                    intent.putExtra("date", postsList.get(getAdapterPosition()).getDate());
+                    v.getContext().startActivity(intent);
+                }
+            });
 
 
             /*view.setOnClickListener(new View.OnClickListener() {

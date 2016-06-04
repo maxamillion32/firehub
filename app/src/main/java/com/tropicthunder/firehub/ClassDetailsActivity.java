@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class ClassDetailsActivity extends AppCompatActivity {
 
     @Override
@@ -27,6 +29,33 @@ public class ClassDetailsActivity extends AppCompatActivity {
         Button backBtn = (Button)findViewById(R.id.btn_Back);
         ImageView coursePicture = (ImageView) findViewById(R.id.img_classPicture);
         ImageView teacherPicture = (ImageView) findViewById(R.id.img_teacherPicture);
+
+        Button btnJoinClass = (Button) findViewById(R.id.btn_joinClass);
+
+        btnJoinClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SweetAlertDialog(v.getContext(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("Please make sure that you want to attend this class.")
+                        .setCancelText("Cancel")
+                        .setConfirmText("Confirm")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.cancel();
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                //do what if press confirm -> do API call?
+                            }
+                        })
+                        .show();
+            }
+        });
 
         Intent intent = getIntent();
 
