@@ -147,8 +147,8 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
                     intent.putExtra("category", tvCategory.getText());
                     intent.putExtra("name", tvTeacherName.getText());
                     intent.putExtra("rating", tvRating.getText());
-                    intent.putExtra("coursePicture", "");
-                    intent.putExtra("teacherPicture", "");
+                    intent.putExtra("coursePicture", postsList.get(getAdapterPosition()).getCoursePicture());
+                    intent.putExtra("teacherPicture", postsList.get(getAdapterPosition()).getTeacherPicture());
                     intent.putExtra("uID", postsList.get(getAdapterPosition()).getUid());
                     intent.putExtra("description", postsList.get(getAdapterPosition()).getDescription());
                     intent.putExtra("venue", postsList.get(getAdapterPosition()).getVenue());
