@@ -58,9 +58,10 @@ public class ClassDetailsActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-
-        for(int i=0; i<intent.getStringArrayExtra("participants").length; i++){
-            System.out.println(intent.getStringArrayExtra("participants")[i]);
+        if(intent.getStringArrayExtra("participants") != null) {
+            for (int i = 0; i < intent.getStringArrayExtra("participants").length; i++) {
+                System.out.println(intent.getStringArrayExtra("participants")[i]);
+            }
         }
 
         teacherName.setText(intent.getStringExtra("name"));
