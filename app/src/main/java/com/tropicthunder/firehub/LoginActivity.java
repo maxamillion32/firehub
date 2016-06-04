@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -25,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com");
 
-        Button btnLogin = (Button)findViewById(R.id.btnLogin);
+        final CircularProgressButton btnLogin = (CircularProgressButton)findViewById(R.id.btnLogin);
         TextView btnRegister = (TextView) findViewById(R.id.btnRegister);
         final EditText txtUsername = (EditText) findViewById(R.id.txtEmail);
         final EditText txtPassword = (EditText) findViewById(R.id.txtPassword);
@@ -34,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticated(AuthData authData) {
                 // Authenticated successfully with payload authData
-                Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
+                btnLogin.setProgress(99);
+                //Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
+
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             }
@@ -42,12 +45,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthenticationError(FirebaseError firebaseError) {
                 // Authenticated failed with error firebaseError
                 Toast.makeText(getApplicationContext(), firebaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                btnLogin.setProgress(0);
             }
         };
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //set button to show progress
+                btnLogin.setProgress(1);
+
                 //Hide keyboard
                 InputMethodManager inputManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -57,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                     ref.authWithPassword(txtUsername.getText().toString(), txtPassword.getText().toString(), authResultHandler);
                 } else {
                     Toast.makeText(getApplicationContext(), "Complete all fields!", Toast.LENGTH_SHORT).show();
+                    //set button to show progress
+                    btnLogin.setProgress(0);
                 }
 
             }
