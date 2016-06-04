@@ -40,16 +40,20 @@ public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.Teac
 
     public static class TeachingViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvClassTitle, tvTeacherName, tvDate;
-
+        ImageView coursePicture, teacherPicture;
+        TextView tvClassTitle, tvCategory, tvTeacherName, tvRating;
         public View view;
 
         TeachingViewHolder(View itemView) {
             super(itemView);
             view = itemView;
+            coursePicture = (ImageView) itemView.findViewById(R.id.img_CoursePicture);
+            teacherPicture = (ImageView) itemView.findViewById(R.id.img_teacherPicture);
             tvClassTitle = (TextView) itemView.findViewById(R.id.txt_classTitle);
-            tvDate = (TextView) itemView.findViewById(R.id.txt_Date);
+            tvCategory = (TextView) itemView.findViewById(R.id.txt_Category);
+            tvRating = (TextView) itemView.findViewById(R.id.txt_rating);
             tvTeacherName = (TextView) itemView.findViewById(R.id.txt_teacherName);
+
 
             coursePicture.setOnClickListener(new View.OnClickListener(){
                 @Override public void onClick(View v){
@@ -114,10 +118,19 @@ public class TeachListAdapter extends RecyclerView.Adapter<TeachListAdapter.Teac
 
         //set answer card textviews text
 
+        postsViewHolder.tvRating.setText(postsList.get(i).getRating());
         postsViewHolder.tvTeacherName.setText(postsList.get(i).getName());
-        postsViewHolder.tvDate.setText(postsList.get(i).getDate());
+        postsViewHolder.tvCategory.setText(postsList.get(i).getCategory());
         postsViewHolder.tvClassTitle.setText(postsList.get(i).getTitle());
 
+        Picasso.with(context).load(postsList.get(i).getCoursePicture())
+                .centerCrop()
+                .fit()
+                .into(postsViewHolder.coursePicture);
+        Picasso.with(context).load(postsList.get(i).getTeacherPicture())
+                .centerCrop()
+                .fit()
+                .into(postsViewHolder.teacherPicture);
 
 //        postsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
