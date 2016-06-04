@@ -15,4 +15,18 @@
         completions."
     </string>
     <string name="title_activity_main">MainActivity</string>
+
+    <string-array name="categories_array">
+
+        <item>Arts</item>
+        <item>Beauty</item>
+        <item>Coding</item>
+        <item>Cooking</item>
+        <item>Empowerment</item>
+        <item>Music</item>
+        <item>Performing Arts</item>
+        <item>Sports</item>
+        <item>Misc.</item>
+    </string-array>
+
 </resources>
