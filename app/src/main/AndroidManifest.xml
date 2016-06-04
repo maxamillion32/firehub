@@ -36,7 +36,10 @@
         <activity
             android:name=".TeachActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MyClassesActivity"
+        <activity
+            android:name=".MyClassesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreateClassActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
