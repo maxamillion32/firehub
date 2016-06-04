@@ -6,23 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class TeachActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_teach);
 
-        Button btnTeach = (Button)findViewById(R.id.btn_Teach);
-
-        btnTeach.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = (Button) findViewById(R.id.btn_Back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TeachActivity.class));
+                startActivity(new Intent(TeachActivity.this, MainActivity.class));
                 finish();
             }
         });
 
-    }
 
+    }
 }

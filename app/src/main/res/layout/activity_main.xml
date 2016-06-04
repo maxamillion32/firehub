@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Firebase"
+                android:text="Firehub Learning"
                 android:id="@+id/textView9"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TEACH"
-                    android:id="@+id/button"
+                    android:id="@+id/btn_Teach"
                     android:background="?android:attr/selectableItemBackground"
 
                     android:textColor="#ffffff"
