@@ -12,7 +12,7 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="70sp"
             android:layout_height="match_parent"
             android:id="@+id/date"
             android:layout_margin="15sp"
@@ -32,7 +32,7 @@
                 android:id="@+id/txt_Date"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -47,14 +47,32 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/txt_className"
-                android:text="&lt;class name>" />
+                android:text="&lt;class name>"
+                android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="&lt;teacher name>"
-                android:id="@+id/txt_teacher" />
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Instructed by "
+                    android:id="@+id/textView10"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="&lt;teacher name>"
+                    android:id="@+id/txt_teacher"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

@@ -247,7 +247,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SIGN UP"
+                android:text="SIGN UP FOR RM20"
                 android:id="@+id/btn_joinClass"
                 android:textColor="#ffffff"
                 android:textStyle="bold"

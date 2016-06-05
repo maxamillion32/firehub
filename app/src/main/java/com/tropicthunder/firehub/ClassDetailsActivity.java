@@ -56,8 +56,6 @@ public class ClassDetailsActivity extends AppCompatActivity {
             }
         }
 
-
-
         btnJoinClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

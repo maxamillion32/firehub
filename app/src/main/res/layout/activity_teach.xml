@@ -70,8 +70,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Teach what you know"
                     android:id="@+id/textView12"
-                    android:textSize="22sp"
-                    android:layout_marginBottom="10px" />
+                    android:textSize="22sp" />
 
                 <TextView
                     android:layout_width="wrap_content"

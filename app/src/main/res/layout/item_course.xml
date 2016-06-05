@@ -139,6 +139,25 @@
                             android:textColor="#000000"
                             android:textSize="16sp"
                             android:layout_marginRight="5sp" />
+
+                        <ImageView
+                            android:layout_width="20sp"
+                            android:layout_height="20sp"
+                            android:id="@+id/imageView12"
+                            android:src="@drawable/coins"
+                            android:layout_marginLeft="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="RM20"
+                            android:id="@+id/txt_price"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="5sp"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:layout_marginRight="5sp" />
                     </LinearLayout>
                 </LinearLayout>
 
