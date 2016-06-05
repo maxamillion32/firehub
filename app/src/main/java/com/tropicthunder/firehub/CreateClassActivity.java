@@ -14,7 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -163,6 +166,18 @@ public class CreateClassActivity extends AppCompatActivity implements AdapterVie
 
                 Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com/data/posts");
                 ref.push().setValue(postDetails);
+
+                final Firebase ref2 = new Firebase("https://firehub-ahkl.firebaseio.com/data/posts/count/number");
+                ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        int num = Integer.valueOf(snapshot.getValue().toString());
+                        ref2.setValue(++num);
+                    }
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                    }
+                });
                 finish();
             }
         });
