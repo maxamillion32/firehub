@@ -153,6 +153,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        Button btnProfile = (Button) findViewById(R.id.btn_MyProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, EditProfileActivity.class));
+            }
+        });
+
     }
 
 
