@@ -32,11 +32,18 @@ public class ClassDetailsActivity extends AppCompatActivity {
         TextView venue = (TextView)findViewById(R.id.txt_Venue);
         TextView time = (TextView)findViewById(R.id.txt_Time);
         TextView date = (TextView)findViewById(R.id.txt_Date);
+        TextView actTitle = (TextView)findViewById(R.id.txt_ActivityTitle);
         Button backBtn = (Button)findViewById(R.id.btn_Back);
         ImageView coursePicture = (ImageView) findViewById(R.id.img_classPicture);
         ImageView teacherPicture = (ImageView) findViewById(R.id.img_teacherPicture);
 
         Button btnJoinClass = (Button) findViewById(R.id.btn_joinClass);
+
+        if(intent.getStringExtra("uID").equals(sessionManager.getUid())){
+            btnJoinClass.setText("Participants List");
+            btnJoinClass.setBackgroundColor(Color.RED);
+            actTitle.setText("Your Class Details");
+        }
 
         final String[] participantsArr = intent.getStringArrayExtra("participants");
         if (participantsArr != null) {
