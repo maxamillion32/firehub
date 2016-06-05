@@ -46,27 +46,41 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20sp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Teach what you know."
-                android:id="@+id/textView12"
-                android:textSize="24sp"
-                android:layout_marginBottom="10px" />
+            <ImageView
+                android:layout_width="55sp"
+                android:layout_height="55sp"
+                android:id="@+id/imageView10"
+                android:src="@drawable/teach"
+                android:layout_marginRight="15sp"
+                android:layout_gravity="center_vertical" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Find new people to teach every day"
-                android:id="@+id/textView17" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Teach what you know"
+                    android:id="@+id/textView12"
+                    android:textSize="24sp"
+                    android:layout_marginBottom="10px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Find new people to teach and inspire every day."
+                    android:id="@+id/textView17" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
