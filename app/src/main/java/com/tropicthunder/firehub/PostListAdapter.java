@@ -108,7 +108,6 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
     private static List<PostDetails> postsList;
     private Context context;
     private String timeAgo;
-    private TextView tvJoined;
 
     public PostListAdapter(List<PostDetails> posts, Context c){
         this.postsList = posts;
@@ -128,6 +127,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
     public class PostsViewHolder extends RecyclerView.ViewHolder{
         ImageView coursePicture, teacherPicture;
         TextView tvClassTitle, tvCategory, tvTeacherName, tvRating;
+        TextView tvJoined;
 
         public View view;
 
@@ -205,18 +205,20 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
     @Override
     public void onBindViewHolder(PostsViewHolder postsViewHolder, final int i) {
         SessionManager sessionManager = new SessionManager(this.context);
-        tvJoined.setVisibility(View.INVISIBLE);
+
         //set answer card textviews text
         if (postsList.get(i).getParticipants() != null){
             for (int j=0; j<postsList.get(i).getParticipants().length; j++){
                 if (postsList.get(i).getParticipants()[j].equals(sessionManager.getUid())){
-                    tvJoined.setVisibility(View.VISIBLE);
+                    postsViewHolder.tvJoined.setVisibility(View.VISIBLE);
                     break;
                 }
                 else{
-                    tvJoined.setVisibility(View.INVISIBLE);
+                    postsViewHolder.tvJoined.setVisibility(View.GONE);
                 }
             }
+        }else{
+            postsViewHolder.tvJoined.setVisibility(View.GONE);
         }
         postsViewHolder.tvRating.setText(postsList.get(i).getRating());
         postsViewHolder.tvTeacherName.setText(postsList.get(i).getName());

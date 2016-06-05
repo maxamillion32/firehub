@@ -89,20 +89,20 @@ public class ClassDetailsActivity extends AppCompatActivity {
                                         }
                                         arr[n - 1] = sessionManager.getUid();
 
-                                    ref.setValue(arr);
+                                        ref.setValue(arr);
+                                    } else {
+                                        String[] arr = new String[1];
+                                        arr[0] = sessionManager.getUid();
+                                        ref.setValue(arr);
+                                    }
+                                    sweetAlertDialog.cancel();
+                                    btnJoinClass.setEnabled(false);
+                                    btnJoinClass.setText("Class Joined");
+                                    btnJoinClass.setBackgroundColor(Color.GREEN);
                                 }
-                                else{
-                                    String[] arr = new String[1];
-                                    arr[0] = sessionManager.getUid();
-                                    ref.setValue(arr);
-                                }
-                                sweetAlertDialog.cancel();
-                                btnJoinClass.setEnabled(false);
-                                btnJoinClass.setText("Class Joined");
-                                btnJoinClass.setBackgroundColor(Color.GREEN);
-                            }
-                        })
-                        .show();
+                            })
+                            .show();
+                }
             }
         });
 
