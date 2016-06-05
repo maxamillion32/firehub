@@ -37,7 +37,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
         ImageView coursePicture = (ImageView) findViewById(R.id.img_classPicture);
         ImageView teacherPicture = (ImageView) findViewById(R.id.img_teacherPicture);
 
-        Button btnJoinClass = (Button) findViewById(R.id.btn_joinClass);
+        final Button btnJoinClass = (Button) findViewById(R.id.btn_joinClass);
 
         if(intent.getStringExtra("uID").equals(sessionManager.getUid())){
             btnJoinClass.setText("Participants List");
@@ -59,43 +59,47 @@ public class ClassDetailsActivity extends AppCompatActivity {
         btnJoinClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new SweetAlertDialog(v.getContext(), SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Are you sure?")
-                        .setContentText("Please make sure that you want to attend this class.")
-                        .setCancelText("Cancel")
-                        .setConfirmText("Confirm")
-                        .showCancelButton(true)
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.cancel();
-                            }
-                        })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                //do what if press confirm -> do API call?
-                                Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com/data/posts/" + intent.getStringExtra("key") + "/participants");
-                                if (participantsArr != null){
-                                    int n = participantsArr.length +1;
-                                    String[] arr = new String[n];
+                if(btnJoinClass.getText().toString().equals("Participants List")){
+                    Intent intent = new Intent(ClassDetailsActivity.this, ParticipantsActivity.class);
+                    startActivity(intent);
+                } else {
+                    new SweetAlertDialog(v.getContext(), SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Are you sure?")
+                            .setContentText("Please make sure that you want to attend this class.")
+                            .setCancelText("Cancel")
+                            .setConfirmText("Confirm")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.cancel();
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    //do what if press confirm -> do API call?
+                                    Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com/data/posts/" + intent.getStringExtra("key") + "/participants");
+                                    if (participantsArr != null) {
+                                        int n = participantsArr.length + 1;
+                                        String[] arr = new String[n];
 
-                                    for (int i=0; i<participantsArr.length; i++){
-                                        arr[i] = participantsArr[i];
+                                        for (int i = 0; i < participantsArr.length; i++) {
+                                            arr[i] = participantsArr[i];
+                                        }
+                                        arr[n - 1] = sessionManager.getUid();
+
+                                        ref.setValue(arr);
+                                    } else {
+                                        String[] arr = new String[1];
+                                        arr[0] = sessionManager.getUid();
+                                        ref.setValue(arr);
                                     }
-                                    arr[n-1] = sessionManager.getUid();
-
-                                    ref.setValue(arr);
+                                    sweetAlertDialog.cancel();
                                 }
-                                else{
-                                    String[] arr = new String[1];
-                                    arr[0] = sessionManager.getUid();
-                                    ref.setValue(arr);
-                                }
-                                sweetAlertDialog.cancel();
-                            }
-                        })
-                        .show();
+                            })
+                            .show();
+                }
             }
         });
 

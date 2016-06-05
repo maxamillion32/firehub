@@ -16,7 +16,7 @@ public class ParticipantsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_participants);
 
         // Array of strings...
-        String[] participantNamesArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
+        String[] participantNamesArray = {"Gareth Teoh", "Carson Lim"};
 
         //list view adapter
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.listview_basic, participantNamesArray);
