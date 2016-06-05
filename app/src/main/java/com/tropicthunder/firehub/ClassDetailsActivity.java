@@ -1,6 +1,7 @@
 package com.tropicthunder.firehub;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +38,19 @@ public class ClassDetailsActivity extends AppCompatActivity {
 
         Button btnJoinClass = (Button) findViewById(R.id.btn_joinClass);
 
+        final String[] participantsArr = intent.getStringArrayExtra("participants");
+        if (participantsArr != null) {
+            for (int i = 0; i < participantsArr.length; i++) {
+                if (participantsArr[i].equals(sessionManager.getUid())) {
+                    btnJoinClass.setEnabled(false);
+                    btnJoinClass.setText("Class Joined");
+                    btnJoinClass.setBackgroundColor(Color.GREEN);
+                }
+            }
+        }
+
+
+
         btnJoinClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,12 +71,12 @@ public class ClassDetailsActivity extends AppCompatActivity {
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 //do what if press confirm -> do API call?
                                 Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com/data/posts/" + intent.getStringExtra("key") + "/participants");
-                                if (intent.getStringArrayExtra("participants") != null){
-                                    int n = intent.getStringArrayExtra("participants").length + 1;
+                                if (participantsArr != null){
+                                    int n = participantsArr.length +1;
                                     String[] arr = new String[n];
 
-                                    for (int i=0; i<intent.getStringArrayExtra("participants").length; i++){
-                                        arr[i] = intent.getStringArrayExtra("participants")[i];
+                                    for (int i=0; i<participantsArr.length; i++){
+                                        arr[i] = participantsArr[i];
                                     }
                                     arr[n-1] = sessionManager.getUid();
 
