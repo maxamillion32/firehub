@@ -56,17 +56,23 @@ public class ClassDetailsActivity extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 //do what if press confirm -> do API call?
-                                int n = intent.getStringArrayExtra("participants").length + 1;
-                                String[] arr = new String[n];
                                 Firebase ref = new Firebase("https://firehub-ahkl.firebaseio.com/data/posts/" + intent.getStringExtra("key") + "/participants");
+                                if (intent.getStringArrayExtra("participants") != null){
+                                    int n = intent.getStringArrayExtra("participants").length + 1;
+                                    String[] arr = new String[n];
 
-                                for (int i=0; i<intent.getStringArrayExtra("participants").length; i++){
-                                    arr[i] = intent.getStringArrayExtra("participants")[i];
+                                    for (int i=0; i<intent.getStringArrayExtra("participants").length; i++){
+                                        arr[i] = intent.getStringArrayExtra("participants")[i];
+                                    }
+                                    arr[n-1] = sessionManager.getUid();
+
+                                    ref.setValue(arr);
                                 }
-                                arr[n-1] = sessionManager.getUid();
-
-                                ref.setValue(arr);
-
+                                else{
+                                    String[] arr = new String[1];
+                                    arr[0] = sessionManager.getUid();
+                                    ref.setValue(arr);
+                                }
                                 sweetAlertDialog.cancel();
                             }
                         })
