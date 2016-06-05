@@ -108,6 +108,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
     private static List<PostDetails> postsList;
     private Context context;
     private String timeAgo;
+    private TextView tvJoined;
 
     public PostListAdapter(List<PostDetails> posts, Context c){
         this.postsList = posts;
@@ -124,7 +125,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
         notifyDataSetChanged();
     }*/
 
-    public static class PostsViewHolder extends RecyclerView.ViewHolder{
+    public class PostsViewHolder extends RecyclerView.ViewHolder{
         ImageView coursePicture, teacherPicture;
         TextView tvClassTitle, tvCategory, tvTeacherName, tvRating;
 
@@ -133,12 +134,14 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
         PostsViewHolder(View itemView) {
             super(itemView);
             view = itemView;
+
             coursePicture = (ImageView) itemView.findViewById(R.id.img_CoursePicture);
             teacherPicture = (ImageView) itemView.findViewById(R.id.img_teacherPicture);
             tvClassTitle = (TextView) itemView.findViewById(R.id.txt_classTitle);
             tvCategory = (TextView) itemView.findViewById(R.id.txt_Category);
             tvRating = (TextView) itemView.findViewById(R.id.txt_rating);
             tvTeacherName = (TextView) itemView.findViewById(R.id.txt_teacherName);
+            tvJoined = (TextView) itemView.findViewById(R.id.txt_joined);
 
             coursePicture.setOnClickListener(new View.OnClickListener(){
                 @Override public void onClick(View v){
@@ -201,9 +204,20 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostsV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(PostsViewHolder postsViewHolder, final int i) {
-
-
+        SessionManager sessionManager = new SessionManager(this.context);
+        tvJoined.setVisibility(View.INVISIBLE);
         //set answer card textviews text
+        if (postsList.get(i).getParticipants() != null){
+            for (int j=0; j<postsList.get(i).getParticipants().length; j++){
+                if (postsList.get(i).getParticipants()[j].equals(sessionManager.getUid())){
+                    tvJoined.setVisibility(View.VISIBLE);
+                    break;
+                }
+                else{
+                    tvJoined.setVisibility(View.INVISIBLE);
+                }
+            }
+        }
         postsViewHolder.tvRating.setText(postsList.get(i).getRating());
         postsViewHolder.tvTeacherName.setText(postsList.get(i).getName());
         postsViewHolder.tvCategory.setText(postsList.get(i).getCategory());

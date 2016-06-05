@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                             postsList.set(i, post);
                         }
                     }
+
                     mAdapter.notifyDataSetChanged();
                 }
             }
