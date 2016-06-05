@@ -63,9 +63,10 @@
                 android:layout_width="55sp"
                 android:layout_height="55sp"
                 android:id="@+id/imageView5"
-                android:src="@drawable/logo_notext"
+                android:src="@drawable/backpack"
                 android:layout_marginRight="15sp"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5sp" />
 
             <LinearLayout
                 android:orientation="vertical"
