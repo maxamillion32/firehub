@@ -72,6 +72,22 @@
                             android:alpha="0.9"/>
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="JOINED"
+                        android:id="@+id/txt_joined"
+                        android:layout_gravity="left|top"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:background="@color/colorAccent2"
+                        android:padding="5sp"
+                        android:alpha="0.9"
+                        android:layout_margin="10sp"
+                        android:visibility="gone" />
+
                 </FrameLayout>
 
                 <LinearLayout

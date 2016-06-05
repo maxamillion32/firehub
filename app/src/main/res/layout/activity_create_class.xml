@@ -49,29 +49,41 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20px" >
+            android:layout_margin="20sp"
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Attract your students"
+                android:text="Describe your class well to attract more students."
                 android:id="@+id/textView8"
                 android:textSize="24sp"
                 android:layout_marginBottom="10px" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Describe your class as interestingly as possible"
-                android:id="@+id/textView14"
-                android:layout_marginBottom="30sp" />
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp">
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/spn_category" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView9"
+                    android:src="@drawable/category"
+                    android:layout_marginRight="10sp" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spn_category" />
+
+            </LinearLayout>
 
             <EditText
                 android:layout_width="match_parent"
@@ -109,7 +121,8 @@
                 android:inputType="time"
                 android:ems="10"
                 android:id="@+id/txt_time"
-                android:hint="Time" />
+                android:hint="Time"
+                android:visibility="gone" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -117,19 +130,34 @@
                 android:inputType="date"
                 android:ems="10"
                 android:id="@+id/txt_date"
-                android:hint="Date" />
+                android:hint="Date"
+                android:visibility="gone" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Register class"
-                android:id="@+id/btn_register"
-                android:layout_centerVertical="true"
-                android:layout_alignLeft="@+id/editText2"
-                android:layout_alignStart="@+id/editText2"
-                android:layout_marginTop="30sp"
-                android:background="@color/colorPrimary"
-                android:textColor="#ffffff" />
+                android:text="Pick Time"
+                android:id="@+id/btn_pickTime" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick Date"
+                android:id="@+id/btn_pickDate"
+                android:layout_gravity="right" />
+
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register class"
+            android:id="@+id/btn_register"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/editText2"
+            android:layout_alignStart="@+id/editText2"
+            android:layout_marginTop="30sp"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff" />
     </LinearLayout>
 </RelativeLayout>

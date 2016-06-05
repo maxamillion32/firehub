@@ -2,6 +2,7 @@ package com.tropicthunder.firehub;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView.Adapter mAdapter;
@@ -34,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#81c784"));
+        pDialog.setTitleText("Looking for classes near you..");
+        pDialog.setCancelable(false);
+        pDialog.show();
 
         SessionManager sessionManager = new SessionManager(this);
 
@@ -97,12 +106,14 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.getKey().equals("count")){
                     Count count = dataSnapshot.getValue(Count.class);
                     postCount.setText(String.valueOf(count.getNumber()));
+                    pDialog.hide();
                 }
                 else{
                     PostDetails post = dataSnapshot.getValue(PostDetails.class);
                     post.setKey(dataSnapshot.getKey());
                     postsList.add(post);
                     mAdapter.notifyDataSetChanged();
+                    pDialog.hide();
                 }
             }
 
