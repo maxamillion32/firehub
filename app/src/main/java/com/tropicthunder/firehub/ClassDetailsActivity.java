@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ClassDetailsActivity extends AppCompatActivity {
@@ -33,6 +35,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
         TextView time = (TextView)findViewById(R.id.txt_Time);
         TextView date = (TextView)findViewById(R.id.txt_Date);
         TextView actTitle = (TextView)findViewById(R.id.txt_ActivityTitle);
+        TextView title = (TextView) findViewById(R.id.txt_classTitle);
         Button backBtn = (Button)findViewById(R.id.btn_Back);
         ImageView coursePicture = (ImageView) findViewById(R.id.img_classPicture);
         ImageView teacherPicture = (ImageView) findViewById(R.id.img_teacherPicture);
@@ -112,6 +115,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
         venue.setText(intent.getStringExtra("venue"));
         time.setText(intent.getStringExtra("time"));
         date.setText(intent.getStringExtra("date"));
+        title.setText(intent.getStringExtra("title"));
 
         Picasso.with(getApplicationContext()).load(intent.getStringExtra("coursePicture"))
                 .centerCrop()
