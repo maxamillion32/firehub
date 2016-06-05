@@ -68,7 +68,8 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/editText_name"
-                android:hint="Name" />
+                android:hint="Name"
+                android:text="Bryan Lee" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,7 +87,8 @@
                 android:inputType="textEmailAddress"
                 android:ems="10"
                 android:id="@+id/editText_email"
-                android:hint="E-mail" />
+                android:hint="E-mail"
+                android:text="bryanleekm@gmail.com" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/editText_bio"
                 android:lines="4"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:text="I am a 22-year old software engineering student from Taylor&apos;s University. I love sharing my knowledge and making some extra money from my hobbies. I hope that you will enjoy my classes." />
 
         </LinearLayout>
 
@@ -113,6 +116,15 @@
             android:text="Update Profile"
             android:id="@+id/btn_updateProfile"
             android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOG OUT"
+            android:id="@+id/btn_logOut"
+            android:background="@color/cpb_red_dark"
             android:textColor="#ffffff"
             android:textStyle="bold" />
     </LinearLayout>

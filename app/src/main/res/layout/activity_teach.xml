@@ -70,7 +70,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Teach what you know"
                     android:id="@+id/textView12"
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     android:layout_marginBottom="10px" />
 
                 <TextView
@@ -78,7 +78,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Find new people to teach and inspire every day."
-                    android:id="@+id/textView17" />
+                    android:id="@+id/textView17"
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </LinearLayout>
