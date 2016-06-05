@@ -51,7 +51,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
                 if (participantsArr[i].equals(sessionManager.getUid())) {
                     btnJoinClass.setEnabled(false);
                     btnJoinClass.setText("Class Joined");
-                    btnJoinClass.setBackgroundColor(Color.GREEN);
+                    btnJoinClass.setBackgroundColor(Color.parseColor("#81c784"));
                 }
             }
         }
