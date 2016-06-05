@@ -56,5 +56,12 @@
                 android:text="&lt;teacher name>"
                 android:id="@+id/txt_teacher" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="#838383"></LinearLayout>
 </LinearLayout>
