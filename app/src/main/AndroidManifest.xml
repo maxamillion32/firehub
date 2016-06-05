@@ -44,8 +44,11 @@
         <activity
             android:name=".CreateClassActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EditProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ParticipantsActivity"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
     </application>
 
 </manifest>
